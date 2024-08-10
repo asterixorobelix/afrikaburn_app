@@ -1,4 +1,4 @@
-package asterixorobelix.project
+package asterixorobelix.afrikaburn
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image

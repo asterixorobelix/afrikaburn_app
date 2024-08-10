@@ -1,4 +1,4 @@
-package asterixorobelix.project
+package asterixorobelix.afrikaburn
 
 class Greeting {
     private val platform = getPlatform()

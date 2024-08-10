@@ -1,4 +1,4 @@
-package asterixorobelix.project
+package asterixorobelix.afrikaburn
 
 interface Platform {
     val name: String

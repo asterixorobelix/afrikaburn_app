@@ -1,4 +1,4 @@
-package asterixorobelix.project
+package asterixorobelix.afrikaburn
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

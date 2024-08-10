@@ -1,4 +1,4 @@
-package asterixorobelix.project
+package asterixorobelix.afrikaburn
 
 import androidx.compose.ui.window.ComposeUIViewController
 
