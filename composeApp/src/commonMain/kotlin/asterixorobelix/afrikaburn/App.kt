@@ -15,7 +15,11 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 
 import afrikaburn.composeapp.generated.resources.Res
 import afrikaburn.composeapp.generated.resources.compose_multiplatform
+import androidx.lifecycle.viewModelScope
 import asterixorobelix.afrikaburn.viewmodel.CampViewModel
+import io.ktor.client.call.body
+import io.ktor.client.statement.bodyAsText
+import kotlinx.coroutines.launch
 import org.koin.compose.KoinContext
 import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.annotation.KoinExperimentalAPI
@@ -28,6 +32,12 @@ fun App() {
         KoinContext {
             var showContent by remember { mutableStateOf(false) }
             val viewModel = koinViewModel<CampViewModel>()
+            val coroutineScope = rememberCoroutineScope()
+            val data = remember { mutableStateOf("") }
+            coroutineScope.launch {
+                data.value = viewModel.getCamps()?.toString() ?: ""
+            }
+
             Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
                 Button(onClick = { showContent = !showContent }) {
                     Text("Click me!")
@@ -37,12 +47,13 @@ fun App() {
                         Modifier.fillMaxWidth(),
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
-                        Image(painterResource(Res.drawable.compose_multiplatform), null)
-                        Text("Compose: ${viewModel.getHelloWorldGreeting()}")
+                            Image(painterResource(Res.drawable.compose_multiplatform), null)
+                            Text("Compose: ${data.value}")
                     }
                 }
             }
-        }
 
+        }
     }
+
 }
