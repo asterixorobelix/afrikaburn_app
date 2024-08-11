@@ -1,5 +1,8 @@
 package asterixorobelix.afrikaburn.models
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Artwork(
     val label: String,
     val name: String,

@@ -1,5 +1,8 @@
 package asterixorobelix.afrikaburn.models
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class ThemeCamp(
     val label: String,
     val location: Location,
