@@ -1,6 +1,6 @@
 package asterixorobelix.afrikaburn.di
 
-import asterixorobelix.afrikaburn.viewmodel.CampViewModel
+import asterixorobelix.afrikaburn.camp.CampViewModel
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 

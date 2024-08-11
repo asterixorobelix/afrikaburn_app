@@ -11,6 +11,6 @@ data class ThemeCamp(
     val collective: String,
     val openDays: List<Long>?,
     val openTimes: List<Long>?,
-    val scheduleDetail: String,
+    val scheduleDetail: String?,
     val children: Long?,
 )
