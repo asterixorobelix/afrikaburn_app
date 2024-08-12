@@ -14,7 +14,7 @@ import org.koin.dsl.module
 
 val commonModule = module {
     single {
-        HttpClient(CIO) {
+        HttpClient {
             install(Logging) {
             }
             install(ContentNegotiation) {
