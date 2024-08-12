@@ -27,7 +27,7 @@ fun App() {
             coroutineScope.launch {
                 data.value = viewModel.getCamps()
             }
-            campsList(data.value)
+            campsList(data.value, viewModel.isLoading)
         }
     }
 

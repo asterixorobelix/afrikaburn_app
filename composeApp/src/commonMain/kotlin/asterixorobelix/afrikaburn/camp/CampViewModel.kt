@@ -1,5 +1,6 @@
 package asterixorobelix.afrikaburn.camp
 
+import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import asterixorobelix.afrikaburn.Greeting
 import asterixorobelix.afrikaburn.models.ThemeCamp
@@ -10,8 +11,14 @@ class CampViewModel(
     private val greeting: Greeting
 ) : ViewModel() {
 
+    private val _isLoading = mutableStateOf(false)
+    val isLoading = _isLoading
+
     suspend fun getCamps(): List<ThemeCamp> {
-        return afrikaburnRepository.retrieveAfrikaburnInfo()?.themeCamps ?: listOf()
+        _isLoading.value = true
+        val camps = afrikaburnRepository.retrieveAfrikaburnInfo()?.themeCamps ?: listOf()
+        _isLoading.value = false
+        return camps
     }
 
     fun getHelloWorldGreeting() = greeting.greet()
