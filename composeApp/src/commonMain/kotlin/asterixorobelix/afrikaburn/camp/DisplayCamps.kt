@@ -25,16 +25,18 @@ import asterixorobelix.afrikaburn.ui.boldPrefixText
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-fun campsList(camps: List<ThemeCamp>, isLoading: State<Boolean>) {
+fun campsList(themeCamps: State<List<ThemeCamp>>, isLoading: State<Boolean>) {
     if (isLoading.value) {
         CircularProgressIndicator(
-            modifier = Modifier.fillMaxHeight().fillMaxWidth().background(MaterialTheme.colorScheme.background)
+            modifier = Modifier.fillMaxHeight().fillMaxWidth()
+                .background(MaterialTheme.colorScheme.background)
         )
     } else {
         LazyVerticalGrid(
             columns = GridCells.Fixed(1),
             modifier = Modifier.fillMaxWidth().background(MaterialTheme.colorScheme.background)
         ) {
+            val camps = themeCamps.value
             items(camps.count()) {
                 Card(
                     modifier = Modifier.padding(Dimens.SMALL_SPACING),
