@@ -1,5 +1,10 @@
 package asterixorobelix.afrikaburn.camp
 
+import afrikaburn.composeapp.generated.resources.Res
+import afrikaburn.composeapp.generated.resources.collective
+import afrikaburn.composeapp.generated.resources.description
+import afrikaburn.composeapp.generated.resources.name
+import afrikaburn.composeapp.generated.resources.schedule_description
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -13,8 +18,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import asterixorobelix.afrikaburn.models.ThemeCamp
 import asterixorobelix.afrikaburn.resources.Dimens
-import asterixorobelix.afrikaburn.resources.Strings
 import asterixorobelix.afrikaburn.ui.boldPrefixText
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun campsList(camps: List<ThemeCamp>) {
@@ -33,10 +38,10 @@ fun campsList(camps: List<ThemeCamp>) {
                         vertical = Dimens.SMALL_SPACING
                     )
                 ) {
-                    boldPrefixText(prefix = Strings.NAME, camps[it].name)
-                    boldPrefixText(prefix = Strings.COLLECTIVE, camps[it].collective)
-                    boldPrefixText(prefix = Strings.DESCRIPTION, camps[it].description)
-                    boldPrefixText(prefix = Strings.SCHEDULE_DESCRIPTION, camps[it].scheduleDetail)
+                    boldPrefixText(prefix = stringResource(Res.string.name), camps[it].name)
+                    boldPrefixText(prefix = stringResource(Res.string.collective), camps[it].collective)
+                    boldPrefixText(prefix = stringResource(Res.string.description), camps[it].description)
+                    boldPrefixText(prefix = stringResource(Res.string.schedule_description), camps[it].scheduleDetail)
                 }
             }
 
