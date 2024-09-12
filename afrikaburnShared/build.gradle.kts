@@ -27,6 +27,7 @@ kotlin {
         commonMain.dependencies {
             implementation(libs.koin.core)
             implementation (project.dependencies.platform(libs.koin.bom))
+            implementation(libs.ktor.client.core)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
