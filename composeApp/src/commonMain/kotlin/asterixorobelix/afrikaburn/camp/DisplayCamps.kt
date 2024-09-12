@@ -1,9 +1,9 @@
 package asterixorobelix.afrikaburn.camp
 
 import afrikaburn.composeapp.generated.resources.Res
+import afrikaburn.composeapp.generated.resources.camp_name
 import afrikaburn.composeapp.generated.resources.collective
 import afrikaburn.composeapp.generated.resources.description
-import afrikaburn.composeapp.generated.resources.name
 import afrikaburn.composeapp.generated.resources.schedule_description
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -48,7 +48,7 @@ fun campsList(themeCamps: State<List<ThemeCamp>>, isLoading: State<Boolean>) {
                             vertical = Dimens.SMALL_SPACING
                         )
                     ) {
-                        boldPrefixText(prefix = stringResource(Res.string.name), camps[it].name)
+                        boldPrefixText(prefix = stringResource(Res.string.camp_name), camps[it].name)
                         boldPrefixText(
                             prefix = stringResource(Res.string.collective),
                             camps[it].collective
