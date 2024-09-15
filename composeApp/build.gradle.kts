@@ -32,7 +32,7 @@ kotlin {
     apollo {
         service("service") {
             packageName.set("asterixorobelix.afrikaburn.monday")
-            schemaFiles.from("src/commonMain/kotlin/graphql/schema.graphqls")
+            schemaFiles.from("src/commonMain/kotlin/asterixorobelix/afrikaburn/graphql/schema.graphqls")
         }
     }
 
