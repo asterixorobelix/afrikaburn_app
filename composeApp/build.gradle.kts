@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.apollo)
 }
 
 kotlin {
@@ -25,6 +26,13 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "ComposeApp"
             isStatic = true
+        }
+    }
+
+    apollo {
+        service("service") {
+            packageName.set("asterixorobelix.afrikaburn.monday")
+            schemaFiles.from("src/commonMain/kotlin/graphql/schema.graphqls")
         }
     }
 
@@ -71,6 +79,8 @@ kotlin {
             implementation(libs.ktor.engine.cio)
             implementation(libs.ktor.client.content.negotiation)
             implementation(libs.ktor.serialization.json)
+
+            implementation(libs.apollo.runtime)
         }
     }
 }
