@@ -105,6 +105,8 @@ android {
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = libs.versions.version.code.get().toInt()
         versionName = libs.versions.version.name.get()
+
+        setProperty("archivesBaseName", "$applicationId-v$versionCode($versionName)")
     }
     packaging {
         resources {
