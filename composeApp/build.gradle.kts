@@ -27,6 +27,7 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "ComposeApp"
             isStatic = true
+            version = libs.versions.version.code
         }
     }
 
@@ -102,8 +103,8 @@ android {
         applicationId = namespace
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = libs.versions.version.code.get().toInt()
+        versionName = libs.versions.version.name.get()
     }
     packaging {
         resources {
