@@ -23,7 +23,7 @@ fun App() {
             var showContent by remember { mutableStateOf(false) }
             val viewModel = koinViewModel<CampViewModel>()
             val coroutineScope = rememberCoroutineScope()
-            campsList(viewModel.themeCamps, viewModel.isLoading)
+            campsList(viewModel.creativeInitiatives, viewModel.isLoading)
         }
     }
 }

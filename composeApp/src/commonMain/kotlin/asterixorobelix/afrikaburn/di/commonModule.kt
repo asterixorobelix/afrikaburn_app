@@ -1,5 +1,6 @@
 package asterixorobelix.afrikaburn.di
 
+import Afrikaburn.composeApp.BuildConfig
 import asterixorobelix.afrikaburn.Greeting
 import asterixorobelix.afrikaburn.graphql.MondayAuthorizationInterceptor
 import asterixorobelix.afrikaburn.network.NetworkClient
@@ -33,7 +34,7 @@ val commonModule = module {
             .serverUrl("https://api.monday.com/v2")
             .addHttpInterceptor(
                 MondayAuthorizationInterceptor(
-                    "api token here",
+                    BuildConfig.MONDAY_API_KEY,
                     apiVersion = "2024-07"
                 )
             )

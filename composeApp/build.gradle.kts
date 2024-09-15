@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.apollo)
+    alias(libs.plugins.buildConfig)
 }
 
 kotlin {
@@ -83,6 +84,10 @@ kotlin {
             implementation(libs.apollo.runtime)
         }
     }
+}
+
+buildConfig {
+    buildConfigField("MONDAY_API_KEY", System.getenv("MONDAY_API_KEY") ?: error("Environment variable not found"))
 }
 
 android {

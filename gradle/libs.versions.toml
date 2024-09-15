@@ -24,6 +24,7 @@ ktor = "2.3.12"
 coroutines = "1.8.1"
 
 apollo = "4.0.0"
+buildConfig = "5.4.0"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -68,3 +69,4 @@ compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-serialization = {id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin"}
 apollo = { id = "com.apollographql.apollo", version.ref = "apollo" }
+buildConfig = {id = "com.github.gmazzo.buildconfig", version.ref = "buildConfig"}
