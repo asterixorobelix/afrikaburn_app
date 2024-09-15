@@ -1,0 +1,25 @@
+query creativeInitiatives{
+    boards (ids: [ 6835382906]) {
+        id
+        name
+        description
+        columns {
+            title
+        }
+        items_page{
+            items{
+                name
+                column_values{
+                    column {
+                        title
+                    }
+                    text
+                }
+                board{
+                    id
+                    name
+                }
+            }
+        }
+    }
+}

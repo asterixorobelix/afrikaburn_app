@@ -25,7 +25,7 @@ val commonModule = module {
         }
     }
     single { NetworkClient(get<HttpClient>()) }
-    single { AfrikaburnRepository(get<NetworkClient>()) }
+    single { AfrikaburnRepository(get<NetworkClient>(), get<ApolloClient>()) }
     single { Greeting() }
 
     single {
