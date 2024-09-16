@@ -5,6 +5,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import asterixorobelix.afrikaburn.Greeting
+import asterixorobelix.afrikaburn.models.CIDisplayElement
+import asterixorobelix.afrikaburn.models.CreativeInitiativeDisplayElement
 import asterixorobelix.afrikaburn.models.ThemeCamp
 import asterixorobelix.afrikaburn.repository.AfrikaburnRepository
 import kotlinx.coroutines.launch
@@ -15,18 +17,18 @@ class CampViewModel(
     private val _isLoading = mutableStateOf(false)
     val isLoading: State<Boolean> = _isLoading
 
-    private val camps = mutableStateOf(listOf<ThemeCamp>())
-    val themeCamps: State<List<ThemeCamp>> = camps
+    private val ci = mutableStateOf(listOf<CreativeInitiativeDisplayElement>())
+    val creativeInitiatives: State<List<CreativeInitiativeDisplayElement>> = ci
 
     init {
         this.viewModelScope.launch {
-            getCamps()
+            getCI()
         }
     }
 
-    private suspend fun getCamps() {
+    private suspend fun getCI() {
         _isLoading.value = true
-        camps.value = afrikaburnRepository.retrieveAfrikaburnInfo()?.themeCamps ?: listOf()
+        ci.value = afrikaburnRepository.retrieveAfrikaburnInfo() ?: listOf()
         _isLoading.value = false
     }
 }

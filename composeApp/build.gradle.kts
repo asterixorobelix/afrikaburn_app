@@ -7,6 +7,8 @@ plugins {
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kotlin.serialization)
+    alias(libs.plugins.apollo)
+    alias(libs.plugins.buildConfig)
 }
 
 kotlin {
@@ -25,6 +27,14 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "ComposeApp"
             isStatic = true
+            version = libs.versions.version.code
+        }
+    }
+
+    apollo {
+        service("service") {
+            packageName.set("asterixorobelix.afrikaburn.monday")
+            schemaFiles.from("src/commonMain/kotlin/asterixorobelix/afrikaburn/graphql/schema.graphqls")
         }
     }
 
@@ -71,8 +81,14 @@ kotlin {
             implementation(libs.ktor.engine.cio)
             implementation(libs.ktor.client.content.negotiation)
             implementation(libs.ktor.serialization.json)
+
+            implementation(libs.apollo.runtime)
         }
     }
+}
+
+buildConfig {
+    buildConfigField("MONDAY_API_KEY", System.getenv("MONDAY_API_KEY") ?: error("Environment variable not found"))
 }
 
 android {
@@ -87,8 +103,10 @@ android {
         applicationId = namespace
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = libs.versions.version.code.get().toInt()
+        versionName = libs.versions.version.name.get()
+
+        setProperty("archivesBaseName", "$applicationId-v$versionCode($versionName)")
     }
     packaging {
         resources {

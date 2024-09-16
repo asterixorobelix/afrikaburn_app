@@ -11,6 +11,9 @@ import androidx.compose.ui.text.font.FontWeight
 import asterixorobelix.afrikaburn.resources.Dimens
 import asterixorobelix.afrikaburn.util.isDefinitelyNotNullOrEmpty
 
+/**
+ * Does not display if the [text] is empty
+ */
 @Composable
 fun boldPrefixText(prefix: String, text: String?) {
     if (text?.isDefinitelyNotNullOrEmpty() == true) {

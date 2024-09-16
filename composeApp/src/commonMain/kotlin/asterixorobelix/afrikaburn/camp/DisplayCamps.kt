@@ -1,10 +1,7 @@
 package asterixorobelix.afrikaburn.camp
 
 import afrikaburn.composeapp.generated.resources.Res
-import afrikaburn.composeapp.generated.resources.collective
-import afrikaburn.composeapp.generated.resources.description
 import afrikaburn.composeapp.generated.resources.name
-import afrikaburn.composeapp.generated.resources.schedule_description
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -19,13 +16,16 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.State
 import androidx.compose.ui.Modifier
-import asterixorobelix.afrikaburn.models.ThemeCamp
+import asterixorobelix.afrikaburn.models.CreativeInitiativeDisplayElement
 import asterixorobelix.afrikaburn.resources.Dimens
 import asterixorobelix.afrikaburn.ui.boldPrefixText
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-fun campsList(themeCamps: State<List<ThemeCamp>>, isLoading: State<Boolean>) {
+fun campsList(
+    themeCamps: State<List<CreativeInitiativeDisplayElement>>,
+    isLoading: State<Boolean>
+) {
     if (isLoading.value) {
         CircularProgressIndicator(
             modifier = Modifier.fillMaxHeight().fillMaxWidth()
@@ -49,18 +49,14 @@ fun campsList(themeCamps: State<List<ThemeCamp>>, isLoading: State<Boolean>) {
                         )
                     ) {
                         boldPrefixText(prefix = stringResource(Res.string.name), camps[it].name)
-                        boldPrefixText(
-                            prefix = stringResource(Res.string.collective),
-                            camps[it].collective
-                        )
-                        boldPrefixText(
-                            prefix = stringResource(Res.string.description),
-                            camps[it].description
-                        )
-                        boldPrefixText(
-                            prefix = stringResource(Res.string.schedule_description),
-                            camps[it].scheduleDetail
-                        )
+
+                        for (displayElement in camps[it].displayElements) {
+                            boldPrefixText(
+                                prefix = displayElement.title,
+                                displayElement.textContent
+                            )
+                        }
+
                     }
                 }
 
