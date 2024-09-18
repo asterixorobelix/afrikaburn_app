@@ -88,7 +88,8 @@ kotlin {
 }
 
 buildConfig {
-    buildConfigField("MONDAY_API_KEY", System.getenv("MONDAY_API_KEY") ?: error("Environment variable not found"))
+    buildConfigField("MONDAY_API_KEY", System.getenv("MONDAY_API_KEY")
+        ?: error("Monday Environment variable not found"))
 }
 
 android {
