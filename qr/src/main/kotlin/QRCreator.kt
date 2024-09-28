@@ -23,5 +23,5 @@ object QRCreator {
         FileOutputStream("${data.id}.png").use { it.write(pngBytes) }
     }
 
-    const val QR_SIZE = 20
+    private const val QR_SIZE = 20
 }
