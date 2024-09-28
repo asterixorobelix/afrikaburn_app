@@ -20,13 +20,13 @@ import asterixorobelix.afrikaburn.models.CreativeInitiativeDisplayElement
 import asterixorobelix.afrikaburn.resources.Dimens
 import asterixorobelix.afrikaburn.ui.boldPrefixText
 import org.jetbrains.compose.resources.stringResource
+import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
-fun campsList(
-    themeCamps: State<List<CreativeInitiativeDisplayElement>>,
-    isLoading: State<Boolean>
-) {
-    if (isLoading.value) {
+fun campsList() {
+
+    val viewModel = koinViewModel<CampViewModel>()
+    if (viewModel.isLoading.value) {
         CircularProgressIndicator(
             modifier = Modifier.fillMaxHeight().fillMaxWidth()
                 .background(MaterialTheme.colorScheme.background)
@@ -36,7 +36,7 @@ fun campsList(
             columns = GridCells.Fixed(1),
             modifier = Modifier.fillMaxWidth().background(MaterialTheme.colorScheme.background)
         ) {
-            val camps = themeCamps.value
+            val camps = viewModel.creativeInitiatives.value
             items(camps.count()) {
                 Card(
                     modifier = Modifier.padding(Dimens.SMALL_SPACING),
