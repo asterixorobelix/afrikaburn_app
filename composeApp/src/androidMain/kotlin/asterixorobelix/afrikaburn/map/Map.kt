@@ -16,6 +16,7 @@ import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import asterixorobelix.afrikaburn.R
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.serialization.descriptors.StructureKind
 import org.maplibre.android.MapLibre
 import org.maplibre.android.camera.CameraPosition
 import org.maplibre.android.geometry.LatLng
@@ -27,24 +28,24 @@ actual fun map(
     modifier: Modifier,
     contentPadding: PaddingValues,
 ) {
-    Box {
-        org.ramani.compose.MapLibre(modifier = Modifier.fillMaxSize())
-    }
-//    val map = rememberMapViewWithLifecycle()
-//    AndroidView(
-//        modifier = Modifier.fillMaxSize(),
-//        factory = { map },
-//        update = { mapView ->
-//            val onMapReady = object : OnMapReady {
-//                override fun whenReady() {
-//
-//                }
-//
-//            }
-//            mapView.awaitMap(onMapReady)
-//        }
-//
-//    )
+//    Box {
+//        org.ramani.compose.MapLibre(modifier = Modifier.fillMaxSize())
+//    }
+    val map = rememberMapViewWithLifecycle()
+    AndroidView(
+        modifier = Modifier.fillMaxSize(),
+        factory = { map },
+        update = { mapView ->
+            val onMapReady = object : OnMapReady {
+                override fun whenReady() {
+
+                }
+
+            }
+            mapView.awaitMap(onMapReady)
+        }
+
+    )
 }
 
 /**
@@ -53,6 +54,7 @@ actual fun map(
 @Composable
 fun rememberMapViewWithLifecycle(): MapView {
     val context = LocalContext.current
+    MapLibre.getInstance(context)
     val mapView = remember { MapView(context) }
 
     // Makes MapView follow the lifecycle of this composable
@@ -84,7 +86,7 @@ private fun getMapLifecycleObserver(mapView: MapView): LifecycleEventObserver =
 fun MapView.awaitMap(onMapReady: OnMapReady) =
     getMapAsync { map ->
         map.setStyle("https://demotiles.maplibre.org/style.json")
-        map.cameraPosition = CameraPosition.Builder().target(LatLng(0.0,0.0)).zoom(1.0).build()
+        map.cameraPosition = CameraPosition.Builder().target(LatLng(-32.4826389,19.89761111111111)).zoom(5.0).build()
         onMapReady.whenReady()
 
 //        libreMap.setStyle(
