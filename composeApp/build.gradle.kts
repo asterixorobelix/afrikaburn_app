@@ -48,6 +48,7 @@ kotlin {
 
             implementation(libs.kotlinx.coroutines.android)
             implementation(libs.ktor.client.okhttp)
+            implementation(libs.maplibre.android)
         }
         
         iosMain.dependencies {
