@@ -6,3 +6,6 @@ In order to update your bash profile, use [this](https://medium.com/macoclock/ho
 
 ## Icons
 [Here](https://pictogrammers.com/library/mdi/)
+
+## Maps
+[Maplibre](https://github.com/maplibre/maplibre-native?tab=readme-ov-file)

@@ -48,6 +48,8 @@ kotlin {
 
             implementation(libs.kotlinx.coroutines.android)
             implementation(libs.ktor.client.okhttp)
+            implementation(libs.maplibre.android)
+            implementation( "org.ramani-maps:ramani-maplibre:0.6.0")
         }
         
         iosMain.dependencies {
