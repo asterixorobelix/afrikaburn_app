@@ -1,6 +1,7 @@
 package asterixorobelix.afrikaburn.map
 
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
@@ -22,6 +23,6 @@ actual fun map(
 ) {
     UIKitView(
         factory = { MKMapView() },
-        modifier = Modifier.size(300.dp),
+        modifier = Modifier.fillMaxWidth().fillMaxHeight(),
     )
 }
