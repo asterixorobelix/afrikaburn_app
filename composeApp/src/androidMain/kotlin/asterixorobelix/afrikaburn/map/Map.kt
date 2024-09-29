@@ -52,7 +52,7 @@ actual fun map(
  * Remembers a MapView and gives it the lifecycle of the current LifecycleOwner
  */
 @Composable
-fun rememberMapViewWithLifecycle(): MapView {
+private fun rememberMapViewWithLifecycle(): MapView {
     val context = LocalContext.current
     MapLibre.getInstance(context)
     val mapView = remember { MapView(context) }
@@ -83,7 +83,7 @@ private fun getMapLifecycleObserver(mapView: MapView): LifecycleEventObserver =
         }
     }
 
-fun MapView.awaitMap(onMapReady: OnMapReady) =
+private fun MapView.awaitMap(onMapReady: OnMapReady) =
     getMapAsync { map ->
         map.setStyle("https://demotiles.maplibre.org/style.json")
         map.cameraPosition = CameraPosition.Builder().target(LatLng(-32.4826389,19.89761111111111)).zoom(5.0).build()
