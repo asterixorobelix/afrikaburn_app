@@ -14,6 +14,7 @@ import kotlinx.cinterop.ExperimentalForeignApi
 import platform.MapKit.MKMapView
 import platform.UIKit.UITextView
 import platform.UIKit.UIViewController
+import cocoapods.MapLibre.MLNMapView
 
 @OptIn(ExperimentalForeignApi::class)
 @Composable
@@ -22,7 +23,7 @@ actual fun map(
     contentPadding: PaddingValues
 ) {
     UIKitView(
-        factory = { MKMapView() },
+        factory = { MLNMapView() },
         modifier = Modifier.fillMaxWidth().fillMaxHeight(),
     )
 }
