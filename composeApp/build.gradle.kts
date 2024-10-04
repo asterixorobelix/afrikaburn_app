@@ -9,6 +9,7 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.apollo)
     alias(libs.plugins.buildConfig)
+    alias(libs.plugins.kotlinCocoapods)
 }
 
 kotlin {
@@ -29,6 +30,18 @@ kotlin {
             isStatic = true
             version = libs.versions.version.code
         }
+    }
+
+    cocoapods {
+        summary = "Some description for the Shared Module"
+        homepage = "Link to the Shared Module homepage"
+        version = "1.0"
+        ios.deploymentTarget = "16.0"
+        framework {
+            baseName = "shared"
+            isStatic = false
+        }
+        pod ("MapLibre")
     }
 
     apollo {
